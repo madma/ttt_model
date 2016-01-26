@@ -67,6 +67,7 @@ var gameWon = function() {
     ((board[0] === board[1]) && (board[0] === board[2]) && board[0] != "") ||
     ((board[3] === board[4]) && (board[3] === board[5]) && board[3] != "") ||
     ((board[6] === board[7]) && (board[6] === board[8]) && board[6] != "")
+    // TODO: Add rest of winning conditions
     ) {
     return true;
   } else {
@@ -79,7 +80,68 @@ var gameWon = function() {
 
 //whenever called, render will draw the state of the model, only one function to update the view
 var render = function() {
+  // Render turn counter component
+  var turnEl = document.getElementById("turn");
+  turnEl.textContent = "Turn: " + currentPlayer;
+  // Render winner component
+  var winnerEl = document.getElementById("winner");
+  if (!won) {
+    winnerEl.textContent = "Winner: ?";
+  } else {
+    winnerEl.textContent = "Winner: " + currentPlayer;
+  }
+  // Render board component
+  document.getElementById("cell0").textContent = board[0];
+  document.getElementById("cell1").textContent = board[1];
+  document.getElementById("cell2").textContent = board[2];
+  document.getElementById("cell3").textContent = board[3];
+  document.getElementById("cell4").textContent = board[4];
+  document.getElementById("cell5").textContent = board[5];
+  document.getElementById("cell6").textContent = board[6];
+  document.getElementById("cell7").textContent = board[7];
+  document.getElementById("cell8").textContent = board[8];
 
 };
 
+// USER INTERACTION
+
+document.getElementById("restart").addEventListener("click", function(evt) {
+  startGame(); // MODEL
+  render();    // VIEW
+});
+
+document.getElementById("board").addEventListener("click", function(evt) {
+  move(evt.target.id.slice(-1));
+  render();
+});
+
 // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

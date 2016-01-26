@@ -1,47 +1,86 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>TTT Model</title>
 
   <style>
+    * { box-sizing: border-box; }
     body {
       width: 600px;
       margin: 0 auto;
+      text-align: center;
     }
     .align-right {
+      position: absolute;
+      right: 0px;
       height: 100px;
-      width: 400px;
+      width: 100px;
+      border: 1px solid red;
+      padding: 30px 0;
+      font-size: 20px;
     }
     .board {
+      width: 600px;
+      border: 1px solid black;
+      margin: 0 auto;
+      position: relative;
+    }
+    .board table {
       width: 400px;
       height: 400px;
-      border: 1px solid black;
-
     }
+    div {
+      display: inline-block;
+    }
+    button {
+      clear: both;
+    }
+    td {
+      width: 125px;
+      height: 125px;
+      border: 1px solid black;
+      font-size: 40px;
+    }
+    .above { top: 50px; }
+    .below { top: 200px; }
   </style>
-  <link rel="stylesheet" href="">
 </head>
 <body>
-
-
   <h1>Tic Tac Toe</h1>
   <div class="board">
-    <table>
+    <table id="board">
       <tbody>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
+        <tr>
+          <td id="cell0"></td>
+          <td id="cell1"></td>
+          <td id="cell2"></td>
+        </tr>
+        <tr>
+          <td id="cell3"></td>
+          <td id="cell4"></td>
+          <td id="cell5"></td>
+        </tr>
+        <tr>
+          <td id="cell6"></td>
+          <td id="cell7"></td>
+          <td id="cell8"></td>
+        </tr>
       </tbody>
     </table>
+      <div class="align-right above">
+        <span id="turn">Turn: X</span>
+      </div>
+      <div class="align-right below">
+        <span id="winner">Winner: ?</span>
+      </div>
   </div>
-  <div class="align-right">
-    <p>Turn: X</p>
-  </div>
-  <div class="align-right">
-    <p>Winner: ?</p>
-  </div>
+
+
+
+  <button id="restart">RESTART</button>
+
 
   <script src="main.js"></script>
 </body>
